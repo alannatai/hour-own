@@ -1,0 +1,11 @@
+.Nav {
+  margin-top: 20px;
+}
+
+.Nav-link {
+  text-decoration: none;
+  color: #C0BCB5;
+  padding: 20px;
+  font-size: 20px;
+}
+
