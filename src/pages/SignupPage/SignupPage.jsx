@@ -5,6 +5,7 @@ const SignupPage = () => {
   return (
     <div className='SignupPage'>
       SIGN UP PAGE
+      
     </div>
   ); 
 }
