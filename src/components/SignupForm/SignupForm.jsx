@@ -23,19 +23,19 @@ class SignupForm extends Component {
       this.props.handleSignupOrLogin();
       this.props.history.push('/')
     } catch(err) {
-      this.props.updateMessage(err.message);
+      console.log(err)
     }
   }
 
   isFormInvalid() {
-    return !(this.state.name && this.state.email && this.state.password === this.state.passwordConf);
+    return !(this.state.name && this.state.email && this.state.password === this.state.passwordConfirm);
   }
 
   render() {
     return (
       <>
         <header>Sign up</header>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input type="text" placeholder="Name" value={this.state.name} name="name" onChange={this.handleChange}/>
           <input type="email" placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange}/>
           <input type="password" placeholder="Password" value={this.state.password} name="password" onChange={this.handleChange}/>

@@ -1,8 +1,6 @@
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 
-const SECRET = process.env.SECRET;
-
 async function signup(req, res) {
   const user = new User(req.body);
   try {
@@ -34,7 +32,7 @@ async function login(req, res) {
 function createJWT(user) {
   return jwt.sign(
     { user },
-    SECRET,
+    process.env.SECRET,
     { expiresIn: '24h' }
   );
 }

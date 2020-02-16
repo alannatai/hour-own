@@ -5,7 +5,7 @@ import Dashboard from './pages/Dashboard/Dashboard'
 import SignupPage from './pages/SignupPage/SignupPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import Nav from './components/Nav/Nav';
-import userService from '../../utils/userService';
+import userService from './utils/userService';
 
 import './App.css';
 
@@ -33,7 +33,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <Nav handleLogout={ this.handleLogout }/>
+        <Nav handleLogout={ this.handleLogout } user={this.state.user}/>
         <Switch>
           <Route 
             exact
