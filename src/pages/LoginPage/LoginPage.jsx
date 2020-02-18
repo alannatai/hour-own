@@ -29,25 +29,25 @@ class LoginPage extends Component {
 
 	render() {
 		return (
-			<div className="LoginPage">
+			<div className='LoginPage'>
 				<header>Log In</header>
 				<form onSubmit={this.handleSubmit}>
 					<input
-						type="email"
-						placeholder="Email"
+						type='email'
+						placeholder='Email'
 						value={this.state.email}
-						name="email"
+						name='email'
 						onChange={this.handleChange}
 					/>
 					<input
-						type="password"
-						placeholder="Password"
+						type='password'
+						placeholder='Password'
 						value={this.state.password}
-						name="password"
+						name='password'
 						onChange={this.handleChange}
 					/>
 					<button>Log In</button>
-					<Link to="/">Cancel</Link>
+					<Link to='/'>Cancel</Link>
 				</form>
 			</div>
 		);

@@ -43,35 +43,35 @@ class SignupForm extends Component {
 				<header>Sign up</header>
 				<form onSubmit={this.handleSubmit}>
 					<input
-						type="text"
-						placeholder="Name"
+						type='text'
+						placeholder='Name'
 						value={this.state.name}
-						name="name"
+						name='name'
 						onChange={this.handleChange}
 					/>
 					<input
-						type="email"
-						placeholder="Email"
+						type='email'
+						placeholder='Email'
 						value={this.state.email}
-						name="email"
+						name='email'
 						onChange={this.handleChange}
 					/>
 					<input
-						type="password"
-						placeholder="Password"
+						type='password'
+						placeholder='Password'
 						value={this.state.password}
-						name="password"
+						name='password'
 						onChange={this.handleChange}
 					/>
 					<input
-						type="password"
-						placeholder="Confirm Password"
+						type='password'
+						placeholder='Confirm Password'
 						value={this.state.passwordConfirm}
-						name="passwordConfirm"
+						name='passwordConfirm'
 						onChange={this.handleChange}
 					/>
 					<button disabled={this.isFormInvalid()}>Sign Up</button>
-					<Link to="/">Cancel</Link>
+					<Link to='/'>Cancel</Link>
 				</form>
 			</>
 		);

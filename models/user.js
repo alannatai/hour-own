@@ -14,7 +14,15 @@ const userSchema = new mongoose.Schema(
     },
     password: {
       type: String
-    }
+    },
+    recurring: [{
+      name: {
+        type: String
+      },
+      hours: {
+        type: Number
+      }
+    }]
   },
   {
     timestamps: true

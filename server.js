@@ -3,7 +3,6 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 
-
 require('dotenv').config();
 
 const app = express();
@@ -23,6 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/recurring', require('./routes/api/recurring'));
 
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
