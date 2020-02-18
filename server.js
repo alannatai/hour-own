@@ -22,6 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/users', require('./routes/api/users'));
+app.use(require('./config/auth'));
 app.use('/api/recurring', require('./routes/api/recurring'));
 
 app.get('/*', function(req, res) {
