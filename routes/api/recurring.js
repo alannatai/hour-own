@@ -8,6 +8,7 @@ function isAuth(req, res, next) {
 }
 
 router.use(require('../../config/auth'));
+router.get('/getRecurring', isAuth, recurringController.getRecurring);
 router.post('/addRecurring', isAuth, recurringController.addRecurring);
 
 module.exports = router;

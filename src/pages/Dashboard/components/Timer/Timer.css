@@ -1,0 +1,9 @@
+.Timer-container {
+  display: flex;
+  justify-content: center;
+}
+
+.Timer-text {
+  font-size: 10rem;
+  margin: 5rem;
+}

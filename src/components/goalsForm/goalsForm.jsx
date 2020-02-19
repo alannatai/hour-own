@@ -4,14 +4,16 @@ import axios from 'axios';
 
 import tokenService from '../../utils/tokenService';
 
-class RecurringForm extends Component {
+class GoalsForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			name: '',
-			hours: ''
-		};
-	}
+			hoursPerWeek: 0,
+      hoursComplete: 0
+    }
+  }
+  
 
 	handleChange = e => {
 		this.setState({
@@ -26,7 +28,7 @@ class RecurringForm extends Component {
 		};
 		axios
 			.post(
-				'http://localhost:3000/api/recurring/addRecurring',
+				'http://localhost:3000/api/goals/addGoal',
 				this.state,
 				options
 			)
@@ -46,29 +48,28 @@ class RecurringForm extends Component {
 				<header>Let's find out how much free time you have in the day!</header>
 				<form onSubmit={this.submitHandler}>
 					<input
-						type='text'
-						placeholder='Enter recurring task'
+						type="text"
+						placeholder="Enter recurring task"
 						value={this.state.name}
-						name='name'
+						name="name"
 						onChange={this.handleChange}
 					/>
-					<label htmlFor='hours'>Hours:</label>
+					<label htmlFor="hours">Hours:</label>
 					<input
-            type='number'
-            placeholder='1.00'
-						name='hours'
-						min='0'
-						max='24'
-						step='0.25'
+						type="number"
+						name="hours"
+						min="0"
+						max="24"
+						step="1"
 						value={this.state.hours}
 						onChange={this.handleChange}
 					/>
 					<button disabled={this.isFormInvalid()}>Add</button>
-					<Link to='/'>Cancel</Link>
+					<Link to="/">Cancel</Link>
 				</form>
 			</>
 		);
 	}
 }
 
-export default RecurringForm;
+export default GoalsForm;

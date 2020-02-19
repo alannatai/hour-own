@@ -22,6 +22,17 @@ const userSchema = new mongoose.Schema(
       hours: {
         type: Number
       }
+    }],
+    goals: [{
+      name: {
+        type: String
+      },
+      hoursPerWeek: {
+        type: Number
+      },
+      hoursComplete: {
+        type: Number
+      }
     }]
   },
   {
