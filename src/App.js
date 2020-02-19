@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import Dashboard from './pages/Dashboard/Dashboard';
 import RecurringPage from './pages/RecurringPage/RecurringPage';
+import GoalsPage from './pages/GoalsPage/GoalsPage';
 import SignupPage from './pages/SignupPage/SignupPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import Nav from './components/Nav/Nav';
@@ -30,7 +31,6 @@ class App extends Component {
 		axios
 			.get('http://localhost:3000/api/recurring/getRecurring', options)
 			.then(res => {
-				console.log(res.data);
 				if (res.data.recurringHoursTotal) {
 					this.setState({
 						recurringTasks: res.data.recurringTasks,
@@ -88,6 +88,19 @@ class App extends Component {
 								)
 							}
 						/>
+            <Route
+							exact
+							path="/goals"
+							render={() =>
+								userService.getUser() ? (
+									<GoalsPage
+										recurringHoursTotal={this.state.recurringHoursTotal}
+									/>
+								) : (
+									<Redirect to="/login" />
+								)
+							}
+						/>
 						<Route
 							exact
 							path="/login"
@@ -111,7 +124,7 @@ class App extends Component {
 					</Switch>
 				</>
 			);
-    }
+		}
 		return <></>;
 	}
 }

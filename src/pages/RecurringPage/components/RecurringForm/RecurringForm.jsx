@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import tokenService from '../../utils/tokenService';
+import tokenService from '../../../../utils/tokenService';
 
 class RecurringForm extends Component {
 	constructor(props) {
@@ -57,14 +57,14 @@ class RecurringForm extends Component {
             type='number'
             placeholder='1.00'
 						name='hours'
-						min='0'
+						min='0.25'
 						max='24'
 						step='0.25'
 						value={this.state.hours}
 						onChange={this.handleChange}
 					/>
 					<button disabled={this.isFormInvalid()}>Add</button>
-					<Link to='/'>Cancel</Link>
+					<Link to='/dashboard'>Cancel</Link>
 				</form>
 			</>
 		);

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import tokenService from '../../utils/tokenService';
+import tokenService from '../../../../utils/tokenService';
 
 class GoalsForm extends Component {
 	constructor(props) {
@@ -10,10 +10,9 @@ class GoalsForm extends Component {
 		this.state = {
 			name: '',
 			hoursPerWeek: 0,
-      hoursComplete: 0
-    }
-  }
-  
+			hoursComplete: 0
+		};
+	}
 
 	handleChange = e => {
 		this.setState({
@@ -27,45 +26,46 @@ class GoalsForm extends Component {
 			headers: { Authorization: 'Bearer ' + tokenService.getToken() }
 		};
 		axios
-			.post(
-				'http://localhost:3000/api/goals/addGoal',
-				this.state,
-				options
-			)
+			.post('http://localhost:3000/api/goals/addGoal', this.state, options)
 			.then(res => {
 				window.location.reload();
-				console.log(res.data);
 			});
 	};
 
 	isFormInvalid() {
-		return !(this.state.name && this.state.hours);
+		return !(this.state.name && this.state.hoursPerWeek);
 	}
 
 	render() {
+    const { recurringHoursTotal } = this.props;
 		return (
 			<>
-				<header>Let's find out how much free time you have in the day!</header>
+				<header>
+					You have {24 - recurringHoursTotal} hours of free time per day. Enter in some goals you would like
+					to accomplish.
+				</header>
 				<form onSubmit={this.submitHandler}>
+          <label htmlFor="name">Enter goal:</label>
 					<input
 						type="text"
-						placeholder="Enter recurring task"
+						placeholder="eg. Work on Side Project"
 						value={this.state.name}
 						name="name"
 						onChange={this.handleChange}
 					/>
-					<label htmlFor="hours">Hours:</label>
-					<input
-						type="number"
-						name="hours"
-						min="0"
-						max="24"
-						step="1"
-						value={this.state.hours}
+					<label htmlFor="hoursPerWeek">Hours/Week:</label>
+          <input
+            type='number'
+            placeholder='1.0'
+						name='hoursPerWeek'
+						min='1'
+						max='168'
+						step='0.5'
+						value={this.state.hoursPerWeek}
 						onChange={this.handleChange}
 					/>
 					<button disabled={this.isFormInvalid()}>Add</button>
-					<Link to="/">Cancel</Link>
+					<Link to="/dashboard">Cancel</Link>
 				</form>
 			</>
 		);

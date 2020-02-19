@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './RecurringPage.css';
-import RecurringForm from '../../components/RecurringForm/RecurringForm';
+import RecurringForm from './components/RecurringForm/RecurringForm';
 
 const RecurringPage = props => {
   const tasks = props.recurringTasks;
