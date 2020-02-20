@@ -11,12 +11,14 @@ function formatTime(hours) {
 	return `${hourNum}:${mins}`;
 }
 
-class Timer extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			timer: 0
-		};
+// class Timer extends Component {
+// 	constructor(props) {
+// 		super(props);
+// 		this.state = {
+// 			timer: 0
+//     };
+  
+const Timer = props => {    
 
 		const goals = props.goals;
 		let goalsTotalHours;
@@ -49,6 +51,6 @@ class Timer extends Component {
 			</div>
 		);
 	}
-}
+
 
 export default Timer;

@@ -10,7 +10,8 @@ const goalSchema = new mongoose.Schema(
     hoursComplete: {
       type: Number,
       default: 0
-    }
+    },
+    hoursGoal: Number
   },
   {
     timestamps: true

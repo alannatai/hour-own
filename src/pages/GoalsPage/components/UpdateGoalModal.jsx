@@ -1,74 +1,113 @@
-import React, { Component } from "react";
-import M from "materialize-css";
-import "materialize-css/dist/css/materialize.min.css";
+import React, { Component } from 'react';
+import axios from 'axios';
+import M from 'materialize-css';
+import 'materialize-css/dist/css/materialize.min.css';
+import tokenService from '../../../utils/tokenService';
 
-class UpdateGoalModal extends Component {
-  componentDidMount() {
-    const options = {
-      onOpenStart: () => {
-        console.log("Open Start");
-      },
-      onOpenEnd: () => {
-        console.log("Open End");
-      },
-      onCloseStart: () => {
-        console.log("Close Start");
-      },
-      onCloseEnd: () => {
-        console.log("Close End");
-      },
-      inDuration: 250,
-      outDuration: 250,
-      opacity: 0.5,
-      dismissible: false,
-      startingTop: "4%",
-      endingTop: "10%"
-    };
-    M.UpdateGoalModal.init(this.UpdateGoalModal, options);
+class Modal extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+      id: this.props.goalId,
+			name: this.props.name,
+			hoursPerDay: this.props.hoursPerDay,
+			hoursComplete: this.props.hoursComplete
+		};
+	}
 
-    // let instance = M.Modal.getInstance(this.Modal);
-    // instance.open();
-    // instance.close();
-    // instance.destroy();
-  }
+	componentDidMount() {
+		const options = {
+			inDuration: 250,
+			outDuration: 250,
+			opacity: 0.5,
+			dismissible: false,
+			startingTop: '4%',
+			endingTop: '10%'
+		};
+		M.Modal.init(this.Modal, options);
+	}
 
-  render() {
-    return (
-      <div>
-        <a
-          className="waves-effect waves-light btn modal-trigger"
-          data-target="modal1"
-        >
-          UpdateGoalModal
-        </a>
+	handleChange = e => {
+		this.setState({
+			[e.target.name]: e.target.value
+		});
+  };
+  
+  submitHandler = e => {
+		e.preventDefault();
+		const options = {
+			headers: { Authorization: 'Bearer ' + tokenService.getToken() }
+		};
+		axios
+			.put('http://localhost:3000/api/goals/updateGoal', this.state, options)
+			.then(res => {
+        console.log(res)
+        window.location.reload();
+			});
+	};
 
-        <div
-          ref={UpdateGoalModal => {
-            this.UpdateGoalModal = UpdateGoalModal;
-          }}
-          id="modal1"
-          className="modal"
-        >
-          {/* If you want Bottom Sheet Modal then add 
-                        bottom-sheet class to the "modal" div
-                        If you want Fixed Footer Modal then add
-                        modal-fixed-footer to the "modal" div*/}
-          <div className="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
-          </div>
-          <div className="modal-footer">
-            <a className="modal-close waves-effect waves-red btn-flat">
-              Disagree
-            </a>
-            <a className="modal-close waves-effect waves-green btn-flat">
-              Agree
-            </a>
-          </div>
-        </div>
-      </div>
-    );
-  }
+	render() {
+    console.log(this.state)
+		return (
+			<div>
+				<a
+					className="waves-effect waves-light btn-small modal-trigger"
+					data-target={'modal' + this.props.id}
+				>
+					Edit
+				</a>
+
+				<div
+					ref={Modal => {
+						this.Modal = Modal;
+					}}
+					id={'modal' + this.props.id}
+					className="modal"
+				>
+					<div className="modal-content">
+						<h4>Edit Goal</h4>
+						<p>{this.props.name}</p>
+						<form onSubmit={this.submitHandler}>
+							<label htmlFor="name">Edit Goal:</label>
+							<input
+								type="text"
+								value={this.state.name}
+								name="name"
+								onChange={this.handleChange}
+							/>
+							<label htmlFor="hoursPerDay">Hours/Day:</label>
+							<input
+								type="number"
+								name="hoursPerDay"
+								min="0.5"
+								max="168"
+								step="0.5"
+								value={this.state.hoursPerDay}
+								onChange={this.handleChange}
+							/>
+							<label htmlFor="hoursComplete">Hours Completed:</label>
+							<input
+								type="number"
+								name="hoursComplete"
+								min="0.5"
+								step="0.5"
+								value={this.state.hoursComplete}
+								onChange={this.handleChange}
+							/>
+							<div className="modal-footer">
+								<button className="modal-close waves-effect waves-red btn-flat">
+									Save
+								</button>
+								<a className="modal-close waves-effect waves-green btn-flat">
+									Cancel
+								</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		);
+	}
 }
 
-export default UpdateGoalModal;
+export default Modal;

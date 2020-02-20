@@ -2,7 +2,7 @@ import React from 'react';
 
 import './GoalsPage.css';
 import GoalsForm from './components/GoalsForm/GoalsForm';
-import UpdateGoalModal from './components/UpdateGoalModal';
+import Modal from './components/UpdateGoalModal';
 
 const GoalsPage = props => {
   const goals = props.goals;
@@ -28,14 +28,12 @@ const GoalsPage = props => {
 				<div className="recurring-goal-form-container">
 					<GoalsForm recurringHoursTotal={props.recurringHoursTotal} />
 					<ul>
-						{goals ? goals.map(goal => (
+						{goals ? goals.map((goal, i) => (
 							<li key={goal._id}>
 								{goal.name} || {goal.hoursPerDay} hours/day ||{' '}
 								{goal.hoursComplete} hours complete!
-                <button id={goal._id} onClick={props.}>
-									Edit
-								</button>
-								<button id={goal._id} onClick={props.deleteGoalHandler}>
+                <Modal id={i} goalId={goal._id} name={goal.name} hoursPerDay={goal.hoursPerDay} hoursComplete={goal.hoursComplete}/>
+								<button className="waves-effect waves-light btn-small" id={goal._id} onClick={props.deleteGoalHandler}>
 									Delete
 								</button>
 							</li>

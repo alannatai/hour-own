@@ -18,36 +18,59 @@ function addGoal(req, res) {
 
 function completeDailyGoal(req, res) {
 	User.findById(req.user._id, function(err, user) {
-    const item = user.goals.find(goal => {
-      return goal.id === req.body.id
-    })
-    item.hoursComplete += item.hoursPerDay
-    user.save(function(err) {
-      if (err) {
-        res.json({ err })
-      }
-      res.json({ msg: 'Daily goal complete' })
-    })
+		const item = user.goals.find(goal => {
+			return goal.id === req.body.id;
+		});
+		item.hoursComplete += item.hoursPerDay;
+		user.save(function(err) {
+			if (err) {
+				res.json({ err });
+			}
+			res.json({ msg: 'Daily goal complete' });
+		});
 	});
 }
 
 function deleteGoal(req, res) {
-  User.findById(req.user._id, function(err, user) {
-    const item = user.goals.find(task => {
-      return task.id === req.body.id
-    })
-    user.goals.splice(user.goals.indexOf(item), 1);
-    user.save(function(err) {
-      if (err) {
-        res.json({ err });
-      }
-      res.json({ msg: 'Goal deleted' })
-    })
-  })
+	User.findById(req.user._id, function(err, user) {
+		const item = user.goals.find(task => {
+			return task.id === req.body.id;
+		});
+		user.goals.splice(user.goals.indexOf(item), 1);
+		user.save(function(err) {
+			if (err) {
+				res.json({ err });
+			}
+			res.json({ msg: 'Goal deleted' });
+		});
+	});
+}
+
+function updateGoal(req, res) {
+  console.log(req.body);
+  console.log(req.user._id)
+	User.findOneAndUpdate(
+		{
+			_id: req.user._id,
+			'goals._id': req.body.id
+		},
+		{
+			$set: {
+				'goals.$': req.body
+			}
+		},
+		function(err, user) {
+			if (err) {
+				res.json({ err });
+			}
+			res.json({ msg: 'Goal update successful' });
+		}
+	);
 }
 
 module.exports = {
 	addGoal,
-  completeDailyGoal,
-  deleteGoal
+	completeDailyGoal,
+	deleteGoal,
+	updateGoal
 };

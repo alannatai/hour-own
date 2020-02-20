@@ -11,5 +11,6 @@ router.use(require('../../config/auth'));
 router.post('/addGoal', isAuth, goalsController.addGoal);
 router.post('/completeDailyGoal', goalsController.completeDailyGoal);
 router.post('/deleteGoal', goalsController.deleteGoal);
+router.put('/updateGoal', goalsController.updateGoal);
 
 module.exports = router;

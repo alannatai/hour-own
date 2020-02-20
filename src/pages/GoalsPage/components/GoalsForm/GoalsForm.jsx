@@ -10,7 +10,8 @@ class GoalsForm extends Component {
 		this.state = {
 			name: '',
 			hoursPerDay: 0,
-			hoursComplete: 0
+      hoursComplete: 0,
+      hoursGoal: 0
 		};
 	}
 
@@ -57,6 +58,16 @@ class GoalsForm extends Component {
 						max='168'
 						step='0.5'
 						value={this.state.hoursPerDay}
+						onChange={this.handleChange}
+					/>
+          <label htmlFor="hoursGoal">Goal:</label>
+          <input
+            type='number'
+            placeholder='100'
+						name='hoursGoal'
+						min='1'
+						step='1'
+						value={this.state.hoursGoal}
 						onChange={this.handleChange}
 					/>
 					<button disabled={this.isFormInvalid()}>Add</button>
