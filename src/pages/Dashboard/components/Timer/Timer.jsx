@@ -12,20 +12,22 @@ function formatTime(hours) {
 }
 
 const Timer = props => {
-  
-	let goalsTotalHours;
-	if (props.goals.length === 0) {
-		return;
-	} else if (props.goals.length === 1) {
-		goalsTotalHours = props.goals[0].hoursPerDay;
-	} else {
-		goalsTotalHours = props.goals.reduce(
-			(acc, curr) => acc.hoursPerDay + curr.hoursPerDay
-		);
-  }
-  
-  let timerHours = Math.floor(goalsTotalHours).toString().padStart(2, '0');
-  let timerMins = (((goalsTotalHours - timerHours) % 60) * 60).toString().padStart(2, '0');
+	const goalsTotalHours = props.goals.reduce((acc, curr) => {
+		return acc + curr.hoursPerDay;
+	}, 0);
+	// let goalsTotalHours;
+	// if (props.goals.length === 0) {
+	// 	return;
+	// } else if (props.goals.length === 1) {
+	// 	goalsTotalHours = props.goals[0].hoursPerDay;
+	// } else {
+	// 	goalsTotalHours = props.goals.reduce((acc, curr) => {
+	// 		return acc + curr.hoursPerDay;
+	// 	}, 0);
+	// }
+
+	// let timerHours = Math.floor(goalsTotalHours).toString().padStart(2, '0');
+	// let timerMins = (((goalsTotalHours - timerHours) % 60) * 60).toString().padStart(2, '0');
 
 	return (
 		<div className="Timer-container">
@@ -40,7 +42,7 @@ const Timer = props => {
 					end={timerMins}
 					duration={2}
 				/> */}
-        {formatTime(goalsTotalHours)}
+				{formatTime(goalsTotalHours)}
 			</p>
 		</div>
 	);

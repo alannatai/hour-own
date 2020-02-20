@@ -4,16 +4,10 @@ import './GoalsPage.css';
 import GoalsForm from './components/GoalsForm/GoalsForm';
 
 const GoalsPage = props => {
-  let goalsTotalHours;
-	if (props.goals.length === 0) {
-		return;
-	} else if (props.goals.length === 1) {
-		goalsTotalHours = props.goals[0].hoursPerDay;
-	} else {
-		goalsTotalHours = props.goals.reduce(
-			(acc, curr) => acc.hoursPerDay + curr.hoursPerDay
-		);
-  }
+	const goalsTotalHours = props.goals.reduce((acc, curr) => {
+			return acc + curr.hoursPerDay;
+		}, 0);
+	
 	const header = `You have ${(24 - props.recurringHoursTotal) - goalsTotalHours} hours of free time per day. What are some goals you would like to accomplish?`;
 	return (
 		<div className="GoalsPage-container">
