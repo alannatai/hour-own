@@ -9,7 +9,7 @@ class GoalsForm extends Component {
 		super(props);
 		this.state = {
 			name: '',
-			hoursPerWeek: 0,
+			hoursPerDay: 0,
 			hoursComplete: 0
 		};
 	}
@@ -33,7 +33,7 @@ class GoalsForm extends Component {
 	};
 
 	isFormInvalid() {
-		return !(this.state.name && this.state.hoursPerWeek);
+		return !(this.state.name && this.state.hoursPerDay);
 	}
 
 	render() {
@@ -53,15 +53,15 @@ class GoalsForm extends Component {
 						name="name"
 						onChange={this.handleChange}
 					/>
-					<label htmlFor="hoursPerWeek">Hours/Week:</label>
+					<label htmlFor="hoursPerDay">Hours/Day:</label>
           <input
             type='number'
             placeholder='1.0'
-						name='hoursPerWeek'
-						min='1'
+						name='hoursPerDay'
+						min='0.5'
 						max='168'
 						step='0.5'
-						value={this.state.hoursPerWeek}
+						value={this.state.hoursPerDay}
 						onChange={this.handleChange}
 					/>
 					<button disabled={this.isFormInvalid()}>Add</button>

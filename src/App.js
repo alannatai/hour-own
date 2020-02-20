@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import axios from 'axios';
 
-import Dashboard from './pages/Dashboard/Dashboard';
-import RecurringPage from './pages/RecurringPage/RecurringPage';
-import GoalsPage from './pages/GoalsPage/GoalsPage';
+import UserApp from './pages/UserApp/UserApp';
 import SignupPage from './pages/SignupPage/SignupPage';
 import LoginPage from './pages/LoginPage/LoginPage';
-import Nav from './components/Nav/Nav';
+import LoginSignupLinks from './components/LoginSignupLinks/LoginSignupLinks';
 import userService from './utils/userService';
-import tokenService from './utils/tokenService';
 
 import './App.css';
 
@@ -17,28 +13,8 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			user: userService.getUser(),
-			recurringTasks: undefined,
-			recurringHoursTotal: 0,
-			isLoaded: false
+			user: userService.getUser()
 		};
-	}
-
-	componentDidMount() {
-		const options = {
-			headers: { Authorization: 'Bearer ' + tokenService.getToken() }
-		};
-		axios
-			.get('http://localhost:3000/api/recurring/getRecurring', options)
-			.then(res => {
-				if (res.data.recurringHoursTotal) {
-					this.setState({
-						recurringTasks: res.data.recurringTasks,
-						recurringHoursTotal: res.data.recurringHoursTotal.hours,
-						isLoaded: true
-					});
-				}
-			});
 	}
 
 	handleSignupOrLogin = () => {
@@ -47,85 +23,45 @@ class App extends Component {
 		});
 	};
 
-	handleLogout = () => {
-		userService.logout();
-		this.setState({
-			user: null
-		});
-	};
-
 	render() {
 		console.log(this.state);
-		if (this.state.isLoaded) {
-			return (
-				<>
-					<Nav handleLogout={this.handleLogout} user={this.state.user} />
-					<Switch>
-						<Route
-							exact
-							path="/dashboard"
-							render={() =>
-								userService.getUser() ? (
-									<Dashboard
-										recurringHoursTotal={this.state.recurringHoursTotal}
-									/>
-								) : (
-									<Redirect to="/login" />
-								)
-							}
-						/>
-						<Route
-							exact
-							path="/recurring"
-							render={() =>
-								userService.getUser() ? (
-									<RecurringPage
-										recurringHoursTotal={this.state.recurringHoursTotal}
-										recurringTasks={this.state.recurringTasks}
-									/>
-								) : (
-									<Redirect to="/login" />
-								)
-							}
-						/>
-            <Route
-							exact
-							path="/goals"
-							render={() =>
-								userService.getUser() ? (
-									<GoalsPage
-										recurringHoursTotal={this.state.recurringHoursTotal}
-									/>
-								) : (
-									<Redirect to="/login" />
-								)
-							}
-						/>
-						<Route
-							exact
-							path="/login"
-							render={({ history }) => (
-								<LoginPage
-									history={history}
-									handleSignupOrLogin={this.handleSignupOrLogin}
-								/>
-							)}
-						/>
-						<Route
-							exact
-							path="/signup"
-							render={({ history }) => (
-								<SignupPage
-									history={history}
-									handleSignupOrLogin={this.handleSignupOrLogin}
-								/>
-							)}
-						/>
-					</Switch>
-				</>
-			);
-		}
-		return <></>;
+		return (
+			<>
+				{this.state.user ? null : <LoginSignupLinks />}
+				<Switch>
+					<Route
+						path="/user"
+						render={() =>
+							userService.getUser() ? (
+								<UserApp user={this.state.user} />
+							) : (
+								<Redirect to="/login" />
+							)
+						}
+					/>
+					<Route
+						exact
+						path="/login"
+						render={({ history }) => (
+							<LoginPage
+								history={history}
+								handleSignupOrLogin={this.handleSignupOrLogin}
+							/>
+						)}
+					/>
+					<Route
+						exact
+						path="/signup"
+						render={({ history }) => (
+							<SignupPage
+								history={history}
+								handleSignupOrLogin={this.handleSignupOrLogin}
+							/>
+						)}
+					/>
+				</Switch>
+			</>
+		);
 	}
 }
 

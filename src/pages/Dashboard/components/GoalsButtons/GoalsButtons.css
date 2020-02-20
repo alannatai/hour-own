@@ -1,5 +1,15 @@
+.GoalsButtons-container {
+  display: flex;
+  justify-content: center;
+}
+
 .goal-button {
   border: none;
-  width: 30rem;
-  height: 2rem;
+  width: 50rem;
+  height: 3rem;
+  margin: 10px;
+  background-color: #AFAAB9;
+  color: #846075;
+  font-size: 20px;
+  box-shadow: 5px 5px 5px #696969;
 }

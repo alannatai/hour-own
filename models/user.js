@@ -27,11 +27,12 @@ const userSchema = new mongoose.Schema(
       name: {
         type: String
       },
-      hoursPerWeek: {
+      hoursPerDay: {
         type: Number
       },
       hoursComplete: {
-        type: Number
+        type: Number,
+        default: 0
       }
     }]
   },
