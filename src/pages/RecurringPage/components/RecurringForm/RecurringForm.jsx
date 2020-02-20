@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+import './RecurringForm.css';
 import tokenService from '../../../../utils/tokenService';
 
 class RecurringForm extends Component {
@@ -43,16 +44,16 @@ class RecurringForm extends Component {
 	render() {
 		return (
 			<>
-				<header>Let's find out how much free time you have in the day!</header>
 				<form onSubmit={this.submitHandler}>
+          <label htmlFor='name'>Enter daily necessity:</label>
 					<input
 						type='text'
-						placeholder='Enter recurring task'
+						placeholder='eg. Sleep'
 						value={this.state.name}
 						name='name'
 						onChange={this.handleChange}
 					/>
-					<label htmlFor='hours'>Hours:</label>
+					<label htmlFor='hours'>Hours/Day:</label>
 					<input
             type='number'
             placeholder='1.00'
@@ -64,7 +65,7 @@ class RecurringForm extends Component {
 						onChange={this.handleChange}
 					/>
 					<button disabled={this.isFormInvalid()}>Add</button>
-					<Link to='/dashboard'>Cancel</Link>
+					<Link to='/user/dashboard'>Cancel</Link>
 				</form>
 			</>
 		);

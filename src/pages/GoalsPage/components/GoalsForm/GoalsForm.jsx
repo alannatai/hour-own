@@ -37,13 +37,8 @@ class GoalsForm extends Component {
 	}
 
 	render() {
-    const { recurringHoursTotal } = this.props;
 		return (
 			<>
-				<header>
-					You have {24 - recurringHoursTotal} hours of free time per day. Enter in some goals you would like
-					to accomplish.
-				</header>
 				<form onSubmit={this.submitHandler}>
           <label htmlFor="name">Enter goal:</label>
 					<input
@@ -65,7 +60,7 @@ class GoalsForm extends Component {
 						onChange={this.handleChange}
 					/>
 					<button disabled={this.isFormInvalid()}>Add</button>
-					<Link to="/dashboard">Cancel</Link>
+					<Link to="/user/dashboard">Cancel</Link>
 				</form>
 			</>
 		);

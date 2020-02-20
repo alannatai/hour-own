@@ -1,0 +1,9 @@
+.GoalsPage-container {
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  width: 400px;
+  
+}
