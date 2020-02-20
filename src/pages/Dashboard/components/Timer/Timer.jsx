@@ -12,7 +12,7 @@ function formatTime(hours) {
 }
 
 const Timer = props => {
-	console.log(props.goals);
+  
 	let goalsTotalHours;
 	if (props.goals.length === 0) {
 		return;
