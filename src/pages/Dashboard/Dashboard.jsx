@@ -6,13 +6,19 @@ import Timer from './components/Timer/Timer';
 import GoalsButtons from './components/GoalsButtons/GoalsButtons';
 
 const Dashboard = props => {
-  
 	if (props.recurringHoursTotal) {
 		return (
 			<div className="Dashboard-container">
 				<div>
-					<Timer recurringHoursTotal={props.recurringHoursTotal} goals={props.goals} />
-					<GoalsButtons goals={props.goals} goalCompleteHandler={props.goalCompleteHandler}/>
+					<Timer
+						recurringHoursTotal={props.recurringHoursTotal}
+						goals={props.goals}
+						finishedGoalHours={props.finishedGoalHours}
+					/>
+					<GoalsButtons
+						goals={props.goals}
+						goalCompleteHandler={props.goalCompleteHandler}
+					/>
 				</div>
 			</div>
 		);

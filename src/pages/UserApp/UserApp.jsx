@@ -17,7 +17,8 @@ class UserApp extends Component {
 			user: userService.getUser(),
 			recurringTasks: undefined,
 			recurringHoursTotal: 0,
-			goals: undefined,
+      goals: undefined,
+      finishedGoalHours: 0,
 			isLoaded: false
 		};
 	}
@@ -34,7 +35,7 @@ class UserApp extends Component {
 						user: userService.getUser(),
 						recurringTasks: res.data.recurringTasks,
 						recurringHoursTotal: res.data.recurringHoursTotal.hours,
-						goals: res.data.goals,
+            goals: res.data.goals,
 						isLoaded: true
 					});
 				}
@@ -98,8 +99,13 @@ class UserApp extends Component {
 			)
 			.then(res => {
         console.log(res.data);
-        window.location.reload();
-			});
+      });
+
+    e.target.disabled = true;
+
+    this.setState({
+      finishedGoalHours: parseFloat(e.target.getAttribute('hours'))
+    });
   }
 
 	render() {
@@ -116,6 +122,7 @@ class UserApp extends Component {
 									recurringHoursTotal={this.state.recurringHoursTotal}
                   goals={this.state.goals}
                   goalCompleteHandler={this.goalCompleteHandler}
+                  finishedGoalHours={this.state.finishedGoalHours}
 								/>
 							) : (
 								<Redirect to="/login" />

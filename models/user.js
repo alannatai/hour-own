@@ -3,6 +3,20 @@ const bcrypt = require('bcrypt');
 
 const SALT_ROUNDS = 6;
 
+const goalSchema = new mongoose.Schema(
+  {
+    name: String,
+    hoursPerDay: Number,
+    hoursComplete: {
+      type: Number,
+      default: 0
+    }
+  },
+  {
+    timestamps: true
+  }
+)
+
 const userSchema = new mongoose.Schema(
   {
     name: String,
@@ -23,18 +37,7 @@ const userSchema = new mongoose.Schema(
         type: Number
       }
     }],
-    goals: [{
-      name: {
-        type: String
-      },
-      hoursPerDay: {
-        type: Number
-      },
-      hoursComplete: {
-        type: Number,
-        default: 0
-      }
-    }]
+    goals: [goalSchema]
   },
   {
     timestamps: true

@@ -9,7 +9,7 @@ const GoalsButtons = props => {
 			<ul>
 				{goals.map(goal => (
 					<li key={goal._id}>
-            <button id={goal._id} className="goal-button" onClick={props.goalCompleteHandler}>{goal.name}: {goal.hoursPerDay} hours</button>
+            <button id={goal._id} hours={goal.hoursPerDay} className="goal-button" onClick={props.goalCompleteHandler}>{goal.name}: {goal.hoursPerDay} hours</button>
 					</li>
 				))}
 			</ul>

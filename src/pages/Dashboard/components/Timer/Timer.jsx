@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import CountUp from 'react-countup';
 
 import './Timer.css';
@@ -11,28 +11,30 @@ function formatTime(hours) {
 	return `${hourNum}:${mins}`;
 }
 
-const Timer = props => {
-	const goalsTotalHours = props.goals.reduce((acc, curr) => {
-		return acc + curr.hoursPerDay;
-	}, 0);
-	// let goalsTotalHours;
-	// if (props.goals.length === 0) {
-	// 	return;
-	// } else if (props.goals.length === 1) {
-	// 	goalsTotalHours = props.goals[0].hoursPerDay;
-	// } else {
-	// 	goalsTotalHours = props.goals.reduce((acc, curr) => {
-	// 		return acc + curr.hoursPerDay;
-	// 	}, 0);
-	// }
+class Timer extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			timer: 0
+		};
 
-	// let timerHours = Math.floor(goalsTotalHours).toString().padStart(2, '0');
-	// let timerMins = (((goalsTotalHours - timerHours) % 60) * 60).toString().padStart(2, '0');
+		const goals = props.goals;
+		let goalsTotalHours;
 
-	return (
-		<div className="Timer-container">
-			<p className="Timer-text">
-				{/* <CountUp
+		if (goals) {
+			goalsTotalHours = props.goals.reduce((acc, curr) => {
+				return acc + curr.hoursPerDay;
+			}, 0);
+		}
+
+		// let timerHours = Math.floor(goalsTotalHours).toString().padStart(2, '0');
+		// let timerMins = (((goalsTotalHours - timerHours) % 60) * 60).toString().padStart(2, '0');
+
+		console.log(props.finishedGoalHours);
+		return (
+			<div className="Timer-container">
+				<p className="Timer-text">
+					{/* <CountUp
 					start={0}
 					end={timerHours}
 					duration={2}
@@ -42,10 +44,11 @@ const Timer = props => {
 					end={timerMins}
 					duration={2}
 				/> */}
-				{formatTime(goalsTotalHours)}
-			</p>
-		</div>
-	);
-};
+					{formatTime(goalsTotalHours - props.finishedGoalHours)}
+				</p>
+			</div>
+		);
+	}
+}
 
 export default Timer;

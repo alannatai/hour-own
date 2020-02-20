@@ -10,26 +10,26 @@ const RecurringPage = props => {
 	if (props.recurringTasks) {
 		return (
 			<div className="RecurringPage-container">
-        <div>
-				<header className="overlay">
-					{header.split('').map((char, i) => (
-						<span key={header + i}>{char}</span>
-					))}
-				</header>
-				<div className="recurring-goal-form-container">
-					<RecurringForm />
-					<ul>
-						{tasks.map(task => (
-							<li key={task._id}>
-								{task.name} {task.hours} hours
-								<button id={task._id} onClick={props.deleteRecurringHandler}>
-									Delete
-								</button>
-							</li>
+				<div>
+					<header className="overlay">
+						{header.split('').map((char, i) => (
+							<span key={header + i}>{char}</span>
 						))}
-						<li>Total: {props.recurringHoursTotal} hours/day</li>
-					</ul>
-          </div>
+					</header>
+					<div className="recurring-goal-form-container">
+						<RecurringForm />
+						<ul>
+							{tasks.map(task => (
+								<li key={task._id}>
+									{task.name} {task.hours} hours
+									<button id={task._id} onClick={props.deleteRecurringHandler}>
+										Delete
+									</button>
+								</li>
+							))}
+							<li>Total: {props.recurringHoursTotal} hours/day</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		);
@@ -37,7 +37,14 @@ const RecurringPage = props => {
 	return (
 		<div className="RecurringPage-container">
 			<div>
-				<RecurringForm />
+				<header className="overlay">
+					{header.split('').map((char, i) => (
+						<span key={header + i}>{char}</span>
+					))}
+				</header>
+				<div className="recurring-goal-form-container">
+					<RecurringForm />
+				</div>
 			</div>
 		</div>
 	);
