@@ -6,6 +6,7 @@ import './UserApp.css';
 import Dashboard from '../Dashboard/Dashboard';
 import RecurringPage from '../RecurringPage/RecurringPage';
 import GoalsPage from '../GoalsPage/GoalsPage';
+import ProgressPage from '../ProgressPage/ProgressPage';
 import Nav from '../../components/Nav/Nav';
 import userService from '../../utils/userService';
 import tokenService from '../../utils/tokenService';
@@ -17,8 +18,8 @@ class UserApp extends Component {
 			user: userService.getUser(),
 			recurringTasks: undefined,
 			recurringHoursTotal: 0,
-      goals: undefined,
-      finishedGoalHours: 0,
+			goals: undefined,
+			finishedGoalHours: 0,
 			isLoaded: false
 		};
 	}
@@ -35,7 +36,7 @@ class UserApp extends Component {
 						user: userService.getUser(),
 						recurringTasks: res.data.recurringTasks,
 						recurringHoursTotal: res.data.recurringHoursTotal.hours,
-            goals: res.data.goals,
+						goals: res.data.goals,
 						isLoaded: true
 					});
 				}
@@ -54,59 +55,59 @@ class UserApp extends Component {
 
 	deleteRecurringHandler = e => {
 		e.preventDefault();
-    const options = {
+		const options = {
 			headers: { Authorization: 'Bearer ' + tokenService.getToken() }
 		};
 		axios
 			.post(
 				'http://localhost:3000/api/recurring/deleteRecurring',
-        {id: e.target.id},
-        options
+				{ id: e.target.id },
+				options
 			)
 			.then(res => {
-        console.log(res.data);
-        window.location.reload();
+				console.log(res.data);
+				window.location.reload();
 			});
-  };
+	};
 
-  deleteGoalHandler = e => {
+	deleteGoalHandler = e => {
 		e.preventDefault();
-    const options = {
+		const options = {
 			headers: { Authorization: 'Bearer ' + tokenService.getToken() }
 		};
 		axios
 			.post(
 				'http://localhost:3000/api/goals/deleteGoal',
-        {id: e.target.id},
-        options
+				{ id: e.target.id },
+				options
 			)
 			.then(res => {
-        console.log(res.data);
-        window.location.reload();
+				console.log(res.data);
+				window.location.reload();
 			});
-  };
-  
-  goalCompleteHandler = e => {
-    e.preventDefault();
-    const options = {
+	};
+
+	goalCompleteHandler = e => {
+		e.preventDefault();
+		const options = {
 			headers: { Authorization: 'Bearer ' + tokenService.getToken() }
 		};
 		axios
 			.post(
 				'http://localhost:3000/api/goals/completeDailyGoal',
-        {id: e.target.id},
-        options
+				{ id: e.target.id },
+				options
 			)
 			.then(res => {
-        console.log(res.data);
-      });
+				console.log(res.data);
+			});
 
-    e.target.disabled = true;
+		e.target.disabled = true;
 
-    this.setState({
-      finishedGoalHours: parseFloat(e.target.getAttribute('hours'))
-    });
-  }
+		this.setState({
+			finishedGoalHours: parseFloat(e.target.getAttribute('hours'))
+		});
+	};
 
 	render() {
 		console.log(this.state);
@@ -120,9 +121,9 @@ class UserApp extends Component {
 							userService.getUser() ? (
 								<Dashboard
 									recurringHoursTotal={this.state.recurringHoursTotal}
-                  goals={this.state.goals}
-                  goalCompleteHandler={this.goalCompleteHandler}
-                  finishedGoalHours={this.state.finishedGoalHours}
+									goals={this.state.goals}
+									goalCompleteHandler={this.goalCompleteHandler}
+									finishedGoalHours={this.state.finishedGoalHours}
 								/>
 							) : (
 								<Redirect to="/login" />
@@ -149,8 +150,20 @@ class UserApp extends Component {
 							userService.getUser() ? (
 								<GoalsPage
 									goals={this.state.goals}
-                  recurringHoursTotal={this.state.recurringHoursTotal}
-                  deleteGoalHandler={this.deleteGoalHandler}
+									recurringHoursTotal={this.state.recurringHoursTotal}
+									deleteGoalHandler={this.deleteGoalHandler}
+								/>
+							) : (
+								<Redirect to="/login" />
+							)
+						}
+					/>
+					<Route
+						path="/user/progress"
+						render={() =>
+							userService.getUser() ? (
+								<ProgressPage
+									goals={this.state.goals}
 								/>
 							) : (
 								<Redirect to="/login" />

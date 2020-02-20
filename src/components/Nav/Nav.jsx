@@ -10,6 +10,7 @@ const Nav = props => {
         <Link to='/user/dashboard' className='Nav-link'>Dashboard</Link>
         <Link to='/user/recurring' className='Nav-link'>Recurring</Link>
         <Link to='/user/goals' className='Nav-link'>Goals</Link>
+        <Link to='/user/progress' className='Nav-link'>Progress</Link>
         <Link to='' className='Nav-link' onClick={props.handleLogout}>Log Out</Link>
         Welcome! {props.user.name}
       </div>

@@ -60,7 +60,7 @@ class GoalsForm extends Component {
 						value={this.state.hoursPerDay}
 						onChange={this.handleChange}
 					/>
-          <label htmlFor="hoursGoal">Goal:</label>
+          <label htmlFor="hoursGoal">Number of hours goal:</label>
           <input
             type='number'
             placeholder='100'

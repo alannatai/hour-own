@@ -1,0 +1,23 @@
+progress {
+  -webkit-appearance: none;
+   appearance: none;
+
+  width: 800px;
+  height: 30px;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 2px;
+}
+
+progress::-webkit-progress-value {
+  background-image:
+	   -webkit-linear-gradient(top, 
+	                           rgba(255, 255, 255, .25), 
+	                           rgba(0, 0, 0, .25)),
+	   -webkit-linear-gradient(left, #4A6C6F, #a35e86, #ED474A);
+
+    border-radius: 5px; 
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+}

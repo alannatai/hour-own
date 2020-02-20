@@ -3,7 +3,8 @@ const User = require('../models/user');
 function addGoal(req, res) {
 	const goal = {
 		name: req.body.name,
-		hoursPerDay: req.body.hoursPerDay
+    hoursPerDay: req.body.hoursPerDay,
+    hoursGoal: req.body.hoursGoal
 	};
 	User.findById(req.user._id, function(err, user) {
 		user.goals.push(goal);
