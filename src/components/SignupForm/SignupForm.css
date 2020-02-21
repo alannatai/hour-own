@@ -1,0 +1,12 @@
+.Signup-container {
+  top: 0; 
+  left: 0; 
+  height: 100%; 
+  width: 100%;
+  position: absolute;
+  z-index: -999;
+  display: flex;
+  justify-content: center;
+  background-color: #5b305a;
+  align-items: center;
+}

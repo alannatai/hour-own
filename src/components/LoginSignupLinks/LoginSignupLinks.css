@@ -1,0 +1,9 @@
+.LoginSignupLinks {
+  display: flex;
+  justify-content: center;
+  margin: 100px;
+}
+
+#login{
+  margin: 20px;
+}

@@ -39,7 +39,7 @@ class SignupForm extends Component {
 
 	render() {
 		return (
-			<>
+			<div className="Signup-container">
 				<header>Sign up</header>
 				<form onSubmit={this.handleSubmit}>
 					<input
@@ -70,10 +70,10 @@ class SignupForm extends Component {
 						name='passwordConfirm'
 						onChange={this.handleChange}
 					/>
-					<button disabled={this.isFormInvalid()}>Sign Up</button>
-					<Link to='/'>Cancel</Link>
+					<button className="waves-effect waves-light btn-small" disabled={this.isFormInvalid()}>Sign Up</button>
+					<Link className="waves-effect waves-light btn-small" to='/'>Cancel</Link>
 				</form>
-			</>
+			</div>
 		);
 	}
 }

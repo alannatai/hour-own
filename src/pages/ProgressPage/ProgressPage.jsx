@@ -4,7 +4,7 @@ import './ProgressPage.css';
 
 const ProgressPage = props => {
 	console.log(props);
-	const header = `THIS IS THE HELLA COOL PROGRESS PAGE WITH NOTHING IN IT`;
+	const header = `THIS IS THE HELLA COOL PROGRESS PAGE`;
 
 	return (
 		<div className="ProgressPage-container">
@@ -14,16 +14,24 @@ const ProgressPage = props => {
 						<span key={header + i}>{char}</span>
 					))}
 				</header>
-				<ul>
+				<ul className="progress-list">
 					{props.goals.map((goal, i) => (
 						<li>
-							<p>{goal.name}</p>
-							<progress
-								class="progress_bar"
-								value={goal.hoursComplete}
-								max={goal.hoursGoal}
-							></progress>
-              <label>{goal.hoursComplete}/{goal.hoursGoal} EXP</label>
+							<div>
+								<div className="progress-text">
+									<p>{goal.name}</p>
+								</div>
+								<div className="progress-li">
+									<progress
+										class="progress_bar"
+										value={goal.hoursComplete}
+										max={goal.hoursGoal}
+									></progress>
+									<label className="progress-exp">
+										{goal.hoursComplete}/{goal.hoursGoal} EXP
+									</label>
+								</div>
+							</div>
 						</li>
 					))}
 				</ul>

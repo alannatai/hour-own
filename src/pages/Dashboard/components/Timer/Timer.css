@@ -4,9 +4,11 @@
 }
 
 .Timer-text {
-  color: #754260;
+  background: -webkit-linear-gradient( rgb(98, 186, 194), #a35e86, #ED474A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-family: 'Barlow', sans-serif;
   font-size: 10rem;
   margin: 5rem;
-  text-shadow: 7px 7px 7px #ffffff;
+  border-bottom: dotted #754260 10px;
 }

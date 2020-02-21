@@ -27,7 +27,7 @@ const GoalsPage = props => {
 				</header>
 				<div className="recurring-goal-form-container">
 					<GoalsForm recurringHoursTotal={props.recurringHoursTotal} />
-					<ul>
+					<ul className="goals-ul">
 						{goals ? goals.map((goal, i) => (
 							<li key={goal._id}>
 								{goal.name} || {goal.hoursPerDay} hours/day ||{' '}

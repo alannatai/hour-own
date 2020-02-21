@@ -6,8 +6,8 @@ import './LoginSignupLinks.css';
 const LoginSignupLinks = props => {
     return (
       <div className='LoginSignupLinks'>
-        <Link to='/login' className='LoginSignupLinks-link'>Log In</Link>
-        <Link to='/signup' className='LoginSignupLinks-link'>Sign Up</Link>
+        <Link to='/login' id="login" className='waves-effect waves-light btn-large'>Log In</Link>
+        <Link to='/signup' id="login" className='waves-effect waves-light btn-large'>Sign Up</Link>
       </div>
   );
 };

@@ -29,7 +29,7 @@ class LoginPage extends Component {
 
 	render() {
 		return (
-			<div className='LoginPage'>
+			<div className='Login-container'>
 				<header>Log In</header>
 				<form onSubmit={this.handleSubmit}>
 					<input
@@ -46,8 +46,8 @@ class LoginPage extends Component {
 						name='password'
 						onChange={this.handleChange}
 					/>
-					<button>Log In</button>
-					<Link to='/'>Cancel</Link>
+					<button className="waves-effect waves-light btn-small">Log In</button>
+					<Link className="waves-effect waves-light btn-small" to='/'>Cancel</Link>
 				</form>
 			</div>
 		);

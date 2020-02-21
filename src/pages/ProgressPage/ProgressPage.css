@@ -1,3 +1,10 @@
+.ProgressPage-container {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  margin: 0;
+}
+
 progress {
   -webkit-appearance: none;
    appearance: none;
@@ -7,7 +14,7 @@ progress {
 }
 
 progress::-webkit-progress-bar {
-  background-color: #eee;
+  background-color: rgb(199, 199, 199);
   border-radius: 2px;
 }
 
@@ -20,4 +27,22 @@ progress::-webkit-progress-value {
 
     border-radius: 5px; 
     background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+.progress-text {
+  width: 100px;
+}
+
+.progress-li {
+  display: flex;
+  justify-content: space-around;
+  max-width: 1200px;
+}
+
+.progress-list {
+  margin: 0px 100px;
+}
+
+.progress-exp {
+  padding-left: 50px;
 }
