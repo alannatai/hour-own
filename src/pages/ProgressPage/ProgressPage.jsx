@@ -3,7 +3,6 @@ import React from 'react';
 import './ProgressPage.css';
 
 const ProgressPage = props => {
-	console.log(props);
 	const header = `THIS IS THE HELLA COOL PROGRESS PAGE`;
 
 	return (
@@ -15,15 +14,15 @@ const ProgressPage = props => {
 					))}
 				</header>
 				<ul className="progress-list">
-					{props.goals.map((goal, i) => (
-						<li>
+					{props.goals.filter(goal => goal.hoursComplete < goal.hoursGoal).map((goal, i) => (
+						<li key={goal.id}>
 							<div>
 								<div className="progress-text">
 									<p>{goal.name}</p>
 								</div>
 								<div className="progress-li">
 									<progress
-										class="progress_bar"
+										className="progress_bar"
 										value={goal.hoursComplete}
 										max={goal.hoursGoal}
 									></progress>
@@ -35,7 +34,16 @@ const ProgressPage = props => {
 						</li>
 					))}
 				</ul>
-			</div>
+        <div className="CompletedGoals-container">
+          <ul>
+            {props.goals.filter(goal => goal.hoursComplete >= goal.hoursGoal).map(goal => (
+              <li key={goal._id} className="completed-goal">
+                {goal.name}: {goal.hoursPerDay} hours
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
 		</div>
 	);
 };

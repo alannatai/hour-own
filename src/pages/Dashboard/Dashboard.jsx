@@ -16,7 +16,7 @@ const Dashboard = props => {
 						finishedGoalHours={props.finishedGoalHours}
 					/>
 					<GoalsButtons
-						goals={props.goals}
+						goals={props.goals.filter(goal => goal.hoursComplete <= goal.hoursGoal)}
 						goalCompleteHandler={props.goalCompleteHandler}
 					/>
 				</div>

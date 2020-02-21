@@ -25,7 +25,6 @@ class App extends Component {
 	};
 
 	render() {
-		console.log(this.state);
 		return (
 			<>
 				{this.state.user ? null : <LoginSignupLinks />}

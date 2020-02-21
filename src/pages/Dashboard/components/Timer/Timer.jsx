@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import CountUp from 'react-countup';
+import React from 'react';
 
 import './Timer.css';
 
@@ -11,13 +10,6 @@ function formatTime(hours) {
 	return `${hourNum}:${mins}`;
 }
 
-// class Timer extends Component {
-// 	constructor(props) {
-// 		super(props);
-// 		this.state = {
-// 			timer: 0
-//     };
-  
 const Timer = props => {    
 
 		const goals = props.goals;
@@ -29,22 +21,9 @@ const Timer = props => {
 			}, 0);
 		}
 
-		// let timerHours = Math.floor(goalsTotalHours).toString().padStart(2, '0');
-		// let timerMins = (((goalsTotalHours - timerHours) % 60) * 60).toString().padStart(2, '0');
-
 		return (
 			<div className="Timer-container">
 				<p className="Timer-text">
-					{/* <CountUp
-					start={0}
-					end={timerHours}
-					duration={2}
-				/>:
-        <CountUp
-					start={60}
-					end={timerMins}
-					duration={2}
-				/> */}
 					{formatTime(goalsTotalHours)}
 				</p>
 			</div>

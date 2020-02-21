@@ -8,10 +8,11 @@ class Modal extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-      id: this.props.goalId,
+			id: this.props.goalId,
 			name: this.props.name,
 			hoursPerDay: this.props.hoursPerDay,
-			hoursComplete: this.props.hoursComplete
+      hoursComplete: this.props.hoursComplete,
+      hoursGoal: this.props.hoursGoal
 		};
 	}
 
@@ -31,9 +32,9 @@ class Modal extends Component {
 		this.setState({
 			[e.target.name]: e.target.value
 		});
-  };
-  
-  submitHandler = e => {
+	};
+
+	submitHandler = e => {
 		e.preventDefault();
 		const options = {
 			headers: { Authorization: 'Bearer ' + tokenService.getToken() }
@@ -41,16 +42,16 @@ class Modal extends Component {
 		axios
 			.put('http://localhost:3000/api/goals/updateGoal', this.state, options)
 			.then(res => {
-        console.log(res)
-        window.location.reload();
+				console.log(res);
+				window.location.reload();
 			});
 	};
 
 	render() {
-    console.log(this.state)
 		return (
 			<div>
 				<a
+          href="#"
 					className="waves-effect waves-light btn-small modal-trigger"
 					data-target={'modal' + this.props.id}
 				>
@@ -92,6 +93,15 @@ class Modal extends Component {
 								min="0.5"
 								step="0.5"
 								value={this.state.hoursComplete}
+								onChange={this.handleChange}
+							/>
+							<label htmlFor="hoursGoal">Goal:</label>
+							<input
+								type="number"
+								name="hoursGoal"
+								min="0.5"
+								step="0.5"
+								value={this.state.hoursGoal}
 								onChange={this.handleChange}
 							/>
 							<div className="modal-footer">

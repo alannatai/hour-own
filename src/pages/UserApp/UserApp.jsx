@@ -121,7 +121,6 @@ class UserApp extends Component {
   }
 
 	render() {
-		console.log(this.state);
 		if (this.state.isLoaded) {
 			return (
 				<>

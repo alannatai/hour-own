@@ -10,7 +10,7 @@ function addGoal(req, res) {
 		user.goals.push(goal);
 		user.save(function(err) {
 			if (err) {
-				res.json({ err });
+				return res.json({ err });
 			}
 			res.json({ msg: 'Goal added' });
 		});
@@ -26,7 +26,7 @@ function completeDailyGoal(req, res) {
 		item.dailyHours = item.hoursPerDay;
 		user.save(function(err) {
 			if (err) {
-				res.json({ err });
+				return res.json({ err });
 			}
 			res.json({ msg: 'Daily goal complete' });
 		});
@@ -49,9 +49,6 @@ function deleteGoal(req, res) {
 }
 
 function updateGoal(req, res) {
-  console.log(req.body);
-  console.log(req.user._id)
-
 	User.findOneAndUpdate(
 		{
 			_id: req.user._id,
@@ -61,7 +58,8 @@ function updateGoal(req, res) {
 			$set: {
 				'goals.$.name': req.body.name,
 				'goals.$.hoursPerDay': req.body.hoursPerDay,
-				'goals.$.hoursComplete': req.body.hoursComplete,
+        'goals.$.hoursComplete': req.body.hoursComplete,
+        'goals.$.hoursGoal': req.body.hoursGoal,
 			}
 		},
 		function(err, user) {

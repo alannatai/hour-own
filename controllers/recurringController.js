@@ -4,8 +4,7 @@ function getRecurring(req, res) {
 	User.findById(req.user._id, function(err, user) {
     if (err) {
       console.log(err)
-      res.json({ err });
-      return;
+      return res.json({ err });
 		}
 		if (user.recurring.length > 0) {
 			const recurringHoursTotal = user.recurring.reduce(
@@ -35,7 +34,7 @@ function addRecurring(req, res) {
 		user.recurring.push(recurring);
 		user.save(function(err) {
 			if (err) {
-				res.json({ err });
+				return res.json({ err });
 			}
 			res.json({ msg: 'Recurring hours added' });
 		});
@@ -50,7 +49,7 @@ function deleteRecurring(req, res) {
     user.recurring.splice(user.recurring.indexOf(item), 1);
     user.save(function(err) {
       if (err) {
-        res.json({ err });
+        return res.json({ err });
       }
       res.json({ msg: 'Recurring task deleted' })
     })
