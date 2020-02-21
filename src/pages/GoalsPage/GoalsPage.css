@@ -3,6 +3,16 @@
   justify-content: center;
 }
 
+.recurring-goal-form-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.goals-ul {
+  margin-left: 7rem;
+  margin-top: 0;
+}
+
 form {
   width: 400px;
 }

@@ -70,7 +70,8 @@ class GoalsForm extends Component {
 						value={this.state.hoursGoal}
 						onChange={this.handleChange}
 					/>
-					<button disabled={this.isFormInvalid()}>Add</button>
+					<button className="waves-effect waves-light btn-small" disabled={this.isFormInvalid()}>Add</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<Link to="/user/dashboard">Cancel</Link>
 				</form>
 			</>

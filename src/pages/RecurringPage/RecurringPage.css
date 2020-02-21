@@ -3,6 +3,10 @@
   justify-content: center;
 }
 
+.bold-text {
+  font-weight: bold;
+}
+
 header {
   font-size: 3rem;
   font-weight: 300;

@@ -31,6 +31,7 @@ progress::-webkit-progress-value {
 
 .progress-text {
   width: 100px;
+  font-size: 16px;
 }
 
 .progress-li {
@@ -45,4 +46,5 @@ progress::-webkit-progress-value {
 
 .progress-exp {
   padding-left: 50px;
+  font-size: 16px;
 }

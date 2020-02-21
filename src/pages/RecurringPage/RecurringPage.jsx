@@ -21,13 +21,14 @@ const RecurringPage = props => {
 						<ul>
 							{tasks.map(task => (
 								<li key={task._id}>
-									{task.name} {task.hours} hours
-									<button id={task._id} onClick={props.deleteRecurringHandler}>
-										Delete
+									{task.name} // {task.hours} hours
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<button className="waves-effect waves-light btn-small pink darken-2" id={task._id} onClick={props.deleteRecurringHandler}>
+										X
 									</button>
 								</li>
 							))}
-							<li>Total: {props.recurringHoursTotal} hours/day</li>
+							<li className="bold-text">Total: {props.recurringHoursTotal} hours/day</li>
 						</ul>
 					</div>
 				</div>

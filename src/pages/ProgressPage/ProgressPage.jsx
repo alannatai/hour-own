@@ -3,7 +3,7 @@ import React from 'react';
 import './ProgressPage.css';
 
 const ProgressPage = props => {
-	const header = `THIS IS THE HELLA COOL PROGRESS PAGE`;
+	const header = `Your Progress. About to level up!`;
 
 	return (
 		<div className="ProgressPage-container">

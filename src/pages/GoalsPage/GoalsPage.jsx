@@ -29,11 +29,12 @@ const GoalsPage = props => {
 					<ul className="goals-ul">
 						{goals ? goals.map((goal, i) => (
 							<li key={goal._id}>
-								{goal.name} || {goal.hoursPerDay} hours/day ||{' '}
-								{goal.hoursComplete} hours complete!
+								<span className="bold-text">{goal.name}</span>&nbsp;&nbsp;// {goal.hoursPerDay} hrs/day
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <Modal id={i} goalId={goal._id} name={goal.name} hoursPerDay={goal.hoursPerDay} hoursComplete={goal.hoursComplete} hoursGoal={goal.hoursGoal}/>
-								<button className="waves-effect waves-light btn-small" id={goal._id} onClick={props.deleteGoalHandler}>
-									Delete
+								&nbsp;&nbsp;&nbsp;
+                <button className="waves-effect waves-light btn-small pink darken-2" id={goal._id} onClick={props.deleteGoalHandler}>
+									X
 								</button>
 							</li>
 						)) : 'No Goals Yet'}

@@ -4,6 +4,15 @@ body {
   color: #4A6C6F;
 }
 
+a {
+  color: black;
+}
+
+a:hover {
+  color: teal;
+  font-weight: bold;
+}
+
 /* List */
 ul {
   counter-reset: index;  

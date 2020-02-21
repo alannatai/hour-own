@@ -12,7 +12,7 @@ const Nav = props => {
         <Link to='/user/goals' className='Nav-link'>Goals</Link>
         <Link to='/user/progress' className='Nav-link'>Progress</Link>
         <Link to='' className='Nav-link' onClick={props.handleLogout}>Log Out</Link>
-        Welcome! {props.user.name}
+        Welcome {props.user.name}!
       </div>
     )
   }
