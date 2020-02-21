@@ -50,7 +50,8 @@ class UserApp extends Component {
 		userService.logout();
 		this.setState({
 			user: null
-		});
+    });
+    window.location.reload();
 	};
 
 	deleteRecurringHandler = e => {
@@ -100,14 +101,24 @@ class UserApp extends Component {
 			)
 			.then(res => {
 				console.log(res.data);
-			});
+      });
 
-		e.target.disabled = true;
-
+    const newGoals = this.state.goals.map((goal) => (goal._id === e.target.id) ? {...goal, dailyHours: goal.hoursPerDay} : goal);
 		this.setState({
-			finishedGoalHours: parseFloat(e.target.getAttribute('hours'))
+			finishedGoalHours: parseFloat(e.target.getAttribute('hours')),
+      goals: newGoals,
 		});
-	};
+  };
+  
+  resetDay = e => {
+    e.preventDefault();
+    axios
+      .post('http://localhost:3000/api/admin/resetDay')
+      .then(res => {
+        console.log(res.data)
+        window.location.reload();
+      })
+  }
 
 	render() {
 		console.log(this.state);
@@ -170,6 +181,7 @@ class UserApp extends Component {
 							)
 						}
 					/>
+          {this.state.user.email === 'oyaida@msn.com' ? <button className='reset' onClick={this.resetDay}>Reset Day</button> : null}
 				</>
 			);
 		}

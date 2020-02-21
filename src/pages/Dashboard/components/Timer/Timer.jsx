@@ -32,7 +32,6 @@ const Timer = props => {
 		// let timerHours = Math.floor(goalsTotalHours).toString().padStart(2, '0');
 		// let timerMins = (((goalsTotalHours - timerHours) % 60) * 60).toString().padStart(2, '0');
 
-		console.log(props.finishedGoalHours);
 		return (
 			<div className="Timer-container">
 				<p className="Timer-text">
@@ -46,7 +45,7 @@ const Timer = props => {
 					end={timerMins}
 					duration={2}
 				/> */}
-					{formatTime(goalsTotalHours - props.finishedGoalHours)}
+					{formatTime(goalsTotalHours)}
 				</p>
 			</div>
 		);

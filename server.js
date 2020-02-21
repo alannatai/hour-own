@@ -25,6 +25,7 @@ app.use('/api/users', require('./routes/api/users'));
 app.use(require('./config/auth'));
 app.use('/api/recurring', require('./routes/api/recurring'));
 app.use('/api/goals', require('./routes/api/goals'));
+app.use('/api/admin', require('./routes/api/admin'));
 
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
