@@ -27,7 +27,7 @@ class RecurringForm extends Component {
 		};
 		axios
 			.post(
-				'http://localhost:3000/api/recurring/addRecurring',
+				process.env.REACT_APP_BASE_URL + '/api/recurring/addRecurring',
 				this.state,
 				options
 			)

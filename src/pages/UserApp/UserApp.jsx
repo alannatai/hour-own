@@ -29,7 +29,7 @@ class UserApp extends Component {
 			headers: { Authorization: 'Bearer ' + tokenService.getToken() }
 		};
 		axios
-			.get('http://localhost:3000/api/recurring/getRecurring', options)
+			.get(process.env.REACT_APP_BASE_URL + '/api/recurring/getRecurring', options)
 			.then(res => {
 				if (res.data.recurringHoursTotal) {
 					this.setState({
@@ -61,7 +61,7 @@ class UserApp extends Component {
 		};
 		axios
 			.post(
-				'http://localhost:3000/api/recurring/deleteRecurring',
+				process.env.REACT_APP_BASE_URL + '/api/recurring/deleteRecurring',
 				{ id: e.target.id },
 				options
 			)
@@ -78,7 +78,7 @@ class UserApp extends Component {
 		};
 		axios
 			.post(
-				'http://localhost:3000/api/goals/deleteGoal',
+				process.env.REACT_APP_BASE_URL + '/api/goals/deleteGoal',
 				{ id: e.target.id },
 				options
 			)
@@ -95,7 +95,7 @@ class UserApp extends Component {
 		};
 		axios
 			.post(
-				'http://localhost:3000/api/goals/completeDailyGoal',
+				process.env.REACT_APP_BASE_URL + '/api/goals/completeDailyGoal',
 				{ id: e.target.id },
 				options
 			)
@@ -113,7 +113,7 @@ class UserApp extends Component {
   resetDay = e => {
     e.preventDefault();
     axios
-      .post('http://localhost:3000/api/admin/resetDay')
+      .post(process.env.REACT_APP_BASE_URL + '/api/admin/resetDay')
       .then(res => {
         console.log(res.data)
         window.location.reload();

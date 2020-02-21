@@ -40,7 +40,7 @@ class Modal extends Component {
 			headers: { Authorization: 'Bearer ' + tokenService.getToken() }
 		};
 		axios
-			.put('http://localhost:3000/api/goals/updateGoal', this.state, options)
+			.put(process.env.REACT_APP_BASE_URL + '/api/goals/updateGoal', this.state, options)
 			.then(res => {
 				console.log(res);
 				window.location.reload();
