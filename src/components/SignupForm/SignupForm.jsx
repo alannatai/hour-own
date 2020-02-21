@@ -71,6 +71,7 @@ class SignupForm extends Component {
 						onChange={this.handleChange}
 					/>
 					<button className="waves-effect waves-light btn-small" disabled={this.isFormInvalid()}>Sign Up</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<Link className="waves-effect waves-light btn-small" to='/'>Cancel</Link>
 				</form>
 			</div>

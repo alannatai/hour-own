@@ -47,6 +47,7 @@ class LoginPage extends Component {
 						onChange={this.handleChange}
 					/>
 					<button className="waves-effect waves-light btn-small">Log In</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<Link className="waves-effect waves-light btn-small" to='/'>Cancel</Link>
 				</form>
 			</div>

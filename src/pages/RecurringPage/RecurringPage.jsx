@@ -18,7 +18,7 @@ const RecurringPage = props => {
 					</header>
 					<div className="recurring-goal-form-container">
 						<RecurringForm />
-						<ul>
+						<ul className="recurring-ul">
 							{tasks.map(task => (
 								<li key={task._id}>
 									{task.name} // {task.hours} hours

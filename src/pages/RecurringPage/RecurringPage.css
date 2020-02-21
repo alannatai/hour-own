@@ -13,6 +13,11 @@ header {
   margin: 7rem;
 }
 
+.recurring-ul {
+  margin-top: 20px;
+  width: 1000px;
+}
+
 .recurring-goal-form-container {
   margin-left: 10rem;
 }

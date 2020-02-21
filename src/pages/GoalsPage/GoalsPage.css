@@ -3,7 +3,7 @@
   justify-content: center;
 }
 
-.recurring-goal-form-container {
+#goals-list-container {
   display: flex;
   flex-wrap: wrap;
 }
@@ -11,6 +11,7 @@
 .goals-ul {
   margin-left: 7rem;
   margin-top: 0;
+  max-width: 700px;
 }
 
 form {
