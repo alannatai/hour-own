@@ -7,9 +7,17 @@ const GoalsButtons = props => {
 	return (
 		<div className="GoalsButtons-container">
 			<ul>
-				{goals.map(goal => (
+        {goals.map(goal => (
 					<li key={goal._id}>
-            <button id={goal._id} hours={goal.hoursPerDay} className="goal-button" onClick={props.goalCompleteHandler}>{goal.name}: {goal.hoursPerDay} hours</button>
+            <button 
+              id={goal._id} 
+              hours={goal.hoursPerDay} 
+              className={`goal-button ${(goal.hoursPerDay === goal.dailyHours) && "disabled-button"}`} 
+              disabled={(goal.hoursPerDay === goal.dailyHours)}
+              onClick={props.goalCompleteHandler}
+            >
+              {goal.name}: {goal.hoursPerDay} hours
+            </button>
 					</li>
 				))}
 			</ul>

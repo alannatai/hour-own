@@ -2,6 +2,11 @@ const User = require('../models/user');
 
 function getRecurring(req, res) {
 	User.findById(req.user._id, function(err, user) {
+    if (err) {
+      console.log(err)
+      res.json({ err });
+      return;
+		}
 		if (user.recurring.length > 0) {
 			const recurringHoursTotal = user.recurring.reduce(
 				(acc, curr) => {
@@ -17,9 +22,7 @@ function getRecurring(req, res) {
 		} else {
 			res.send({ msg: 'No recurring tasks yet' });
 		}
-		if (err) {
-			res.json({ err });
-		}
+
 	});
 }
 

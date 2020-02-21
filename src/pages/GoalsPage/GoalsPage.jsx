@@ -25,6 +25,7 @@ const GoalsPage = props => {
 						<span key={header + i}>{char}</span>
 					))}
 				</header>
+        
 				<div className="recurring-goal-form-container">
 					<GoalsForm recurringHoursTotal={props.recurringHoursTotal} />
 					<ul className="goals-ul">

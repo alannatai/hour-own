@@ -25,7 +25,7 @@ const Timer = props => {
 
 		if (goals) {
 			goalsTotalHours = props.goals.reduce((acc, curr) => {
-				return acc + curr.hoursPerDay;
+				return acc + curr.hoursPerDay - curr.dailyHours;
 			}, 0);
 		}
 

@@ -9,9 +9,9 @@
   height: 3rem;
   margin: 10px;
   background-color: rgb(235, 235, 235);
-  color: #846075;
+  color: #4A6C6F;
   font-size: 20px;
-  box-shadow: 5px 5px 5px #916c8180;
+  box-shadow: 5px 5px 5px rgba(54, 88, 86, 0.589);
   border-radius: 7px;
   font-family: 'Raleway';
 }
